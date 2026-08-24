@@ -1,14 +1,24 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Cloudflare Pages/Workers does not run the Next.js image optimization server,
-  // so we serve images unoptimized (acceptable for this project's asset set).
+  allowedDevOrigins: ["*.e2b.app"],
   images: {
     unoptimized: true,
   },
   eslint: {
-    // Don't block production builds on lint warnings during early scaffolding.
     ignoreDuringBuilds: true,
+  },
+  outputFileTracingRoot: path.resolve(__dirname, "../.."),
+  outputFileTracingIncludes: {
+    "/": [
+      "./node_modules/@libsql/**/*",
+      "../../node_modules/@libsql/**/*",
+    ],
   },
 };
 
