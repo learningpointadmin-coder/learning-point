@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -7,6 +8,7 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { HomeHero } from "@/components/home-hero";
 
 /* ============================================================================
    HOME PAGE — Learning Point landing page (Emerald Edge)
@@ -64,74 +66,8 @@ const courses = [
 export default function HomePage() {
   return (
     <div className="min-h-screen">
-      {/* ===== NAV ===== */}
-      <header className="border-b border-border-subtle sticky top-0 backdrop-blur-md bg-base/80 z-50">
-        <nav className="max-w-container mx-auto flex items-center justify-between h-header px-4 md:px-6">
-          <div className="flex items-center gap-2.5 font-extrabold text-lg">
-            <span
-              className="w-9 h-9 rounded-lg flex items-center justify-center text-base font-black"
-              style={{
-                background: "linear-gradient(135deg,#10b981,#0ea5e9)",
-                boxShadow: "0 0 18px rgba(16,185,129,.4)",
-              }}
-            >
-              LP
-            </span>
-            Learning Point
-          </div>
-
-          <div className="hidden md:flex items-center gap-7">
-            <a href="#" className="text-sm font-medium text-content-secondary hover:text-content-primary transition-colors">Exams</a>
-            <a href="#" className="text-sm font-medium text-content-secondary hover:text-content-primary transition-colors">Courses</a>
-            <a href="#" className="text-sm font-medium text-content-secondary hover:text-content-primary transition-colors">Test Series</a>
-            <a href="#" className="text-sm font-medium text-content-secondary hover:text-content-primary transition-colors">Free Tests</a>
-          </div>
-
-          <div className="flex items-center gap-2.5">
-            <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-2 border border-border rounded-lg text-xs text-content-secondary cursor-pointer">
-              🌐 EN
-            </span>
-            <Button variant="primary" size="sm">Login</Button>
-          </div>
-        </nav>
-      </header>
-
       {/* ===== HERO ===== */}
-      <section className="max-w-container mx-auto px-4 md:px-6 py-16 md:py-20 text-center animate-fade-in-up">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-500/10 border border-brand-600 rounded-full text-xs font-semibold text-brand-300 mb-6">
-          <span className="w-1.5 h-1.5 rounded-full bg-brand-500" style={{ boxShadow: "0 0 10px #10b981" }} />
-          INDIA&apos;S EXAM-FOCUSED TEST PLATFORM
-        </div>
-
-        <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-5">
-          Master your exam with{" "}
-          <span className="text-gradient">confidence</span>.
-        </h1>
-
-        <p className="text-lg text-content-secondary max-w-xl mx-auto mb-8">
-          Syllabus-grounded tests, deep-approved explanations &amp; real ranks —
-          built for serious aspirants. No fluff, just results.
-        </p>
-
-        <div className="flex gap-3 justify-center flex-wrap">
-          <Button variant="primary" size="lg">Start Free Test →</Button>
-          <Button variant="cta" size="lg">⚡ Explore Courses</Button>
-        </div>
-
-        <div className="flex gap-8 md:gap-12 justify-center mt-12 flex-wrap">
-          {[
-            { n: "500+", l: "Tests" },
-            { n: "50k+", l: "Questions" },
-            { n: "1,000+", l: "Students" },
-            { n: "5", l: "Reattempts" },
-          ].map((s) => (
-            <div key={s.l} className="text-center">
-              <div className="text-2xl md:text-3xl font-extrabold text-brand-300">{s.n}</div>
-              <div className="text-xs text-content-muted mt-0.5">{s.l}</div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <HomeHero />
 
       {/* ===== CATEGORIES ===== */}
       <section className="border-t border-border-subtle">

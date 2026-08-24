@@ -2,7 +2,7 @@
   "name": "@learning-point/web",
   "version": "0.1.0",
   "private": true,
-  "description": "Learning Point — Next.js web app (App Router)",
+  "description": "Learning Point \u2014 Next.js web app (App Router)",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
