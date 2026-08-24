@@ -1,0 +1,19 @@
+{
+  "name": "learning-point",
+  "private": true,
+  "description": "Learning Point — Exam-focused test & learning platform (monorepo)",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @learning-point/web",
+    "build": "npm run build --workspace @learning-point/web",
+    "build:web": "npm run build --workspace @learning-point/web",
+    "preview": "npm run preview --workspace @learning-point/web",
+    "deploy": "npm run deploy --workspace @learning-point/web"
+  },
+  "engines": {
+    "node": ">=18.18.0"
+  }
+}
