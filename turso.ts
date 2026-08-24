@@ -1,9 +1,13 @@
-import { createClient } from "@libsql/client";
+import { createClient } from "@libsql/client/http";
 import { randomUUID } from "node:crypto";
 
 /* ============================================================================
+
    TURSO CLIENT (server-only) — questions, options, explanations, attempts
    Used by server components + route handlers. Never imported by client code.
+   NOTE: imports from "@libsql/client/http" (explicit HTTP subpath) so the
+   Cloudflare/OpenNext bundle resolves cleanly. HTTP transport is what Turso
+   recommends for serverless/edge and works identically in Node dev.
    ============================================================================ */
 
 export function turso() {
