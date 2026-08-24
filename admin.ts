@@ -1,10 +1,7 @@
-// Explicit HTTP subpath — see src/lib/turso.ts for the reason (Cloudflare
-// bundling fix). Same createClient API, HTTP transport (Turso edge-recommended).
-import { createClient } from "@libsql/client/http";
+import { createClient } from "@libsql/client";
 import { randomUUID } from "node:crypto";
 
 /* ============================================================================
-
    ADMIN LAYER (server-only)
    - requireAdmin: verifies the bearer access token via Supabase + checks the
      staff table. Admin API routes call this first.
