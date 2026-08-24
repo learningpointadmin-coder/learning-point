@@ -8,9 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cf-build": "opennextjs-cloudflare",
-    "preview": "opennextjs-cloudflare && wrangler dev",
-    "deploy": "opennextjs-cloudflare && wrangler deploy"
+   "cf-build": "opennextjs-cloudflare build",
+"preview": "opennextjs-cloudflare build && wrangler dev",
+"deploy": "opennextjs-cloudflare build && wrangler deploy",
   },
   "dependencies": {
     "next": "^15.1.6",
