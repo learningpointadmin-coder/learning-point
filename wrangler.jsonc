@@ -1,0 +1,15 @@
+{
+  // Cloudflare Workers config for the Learning Point web app (via OpenNext).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "learning-point-web",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-01-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

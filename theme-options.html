@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Point — Theme Options</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans Devanagari',sans-serif;background:#050608;color:#e2e8f0;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:48px 24px}
+  .intro{text-align:center;margin-bottom:56px}
+  .intro h1{font-size:2.4rem;font-weight:800;margin-bottom:12px;background:linear-gradient(135deg,#fff,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .intro p{color:#94a3b8;font-size:1.05rem;max-width:560px;margin:0 auto}
+  .pill{display:inline-flex;gap:8px;padding:6px 14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:999px;font-size:0.8rem;font-weight:600;color:#94a3b8;margin-bottom:20px}
+
+  /* Theme card wrapper */
+  .theme-block{border-radius:20px;overflow:hidden;margin-bottom:40px;border:1px solid rgba(255,255,255,0.08)}
+  .theme-tag{padding:14px 24px;font-weight:700;font-size:0.95rem;display:flex;align-items:center;justify-content:space-between}
+  .theme-tag .num{font-size:0.75rem;opacity:0.7}
+  .theme-body{padding:0}
+
+  /* === THEME 1: EMERALD EDGE === */
+  .t-emerald{--b1:#06120F;--b2:#0D1F1A;--b3:#142821;--b4:#1B3329;--prim:#10B981;--prim2:#34D399;--sec:#0EA5E9;--acc:#FBBF24;--tx:#ECFDF5;--tx2:#7DA39A}
+  /* === THEME 2: ROYAL VIOLET === */
+  .t-royal{--b1:#0C0816;--b2:#15102A;--b3:#1E1638;--b4:#2A1F4D;--prim:#8B5CF6;--prim2:#A78BFA;--sec:#6366F1;--acc:#FBBF24;--tx:#F5F3FF;--tx2:#9D92C2}
+  /* === THEME 3: TEAL AURORA === */
+  .t-teal{--b1:#061416;--b2:#0B1F22;--b3:#102B2F;--b4:#163A40;--prim:#14B8A6;--prim2:#2DD4BF;--sec:#06B6D4;--acc:#FB7185;--tx:#F0FDFA;--tx2:#7DA59F}
+
+  .hero{background:var(--b1);padding:48px 32px;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top left,var(--prim),transparent 50%),radial-gradient(ellipse at bottom right,var(--sec),transparent 50%);opacity:0.18;pointer-events:none}
+  .hero-inner{position:relative;max-width:560px}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(255,255,255,0.08);border:1px solid var(--prim);border-radius:999px;font-size:0.78rem;font-weight:600;color:var(--prim2);margin-bottom:18px}
+  .hero-badge .d{width:7px;height:7px;border-radius:50%;background:var(--prim);box-shadow:0 0 10px var(--prim)}
+  .hero h2{font-size:2rem;font-weight:800;color:var(--tx);line-height:1.15;margin-bottom:12px}
+  .hero h2 .hl{background:linear-gradient(135deg,var(--prim2),var(--sec));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .hero p{color:var(--tx2);margin-bottom:24px;font-size:1rem}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;border-radius:10px;border:none;cursor:pointer;font-size:0.95rem;padding:12px 22px;transition:all .2s;text-decoration:none}
+  .btn-grad{background:linear-gradient(135deg,var(--prim),var(--sec));color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.4),0 0 20px color-mix(in srgb,var(--prim) 40%,transparent)}
+  .btn-grad:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.5),0 0 30px color-mix(in srgb,var(--prim) 50%,transparent)}
+  .btn-ghost{background:rgba(255,255,255,.06);color:var(--tx);border:1px solid rgba(255,255,255,.15)}
+  .btn-accent{background:var(--acc);color:#1a1410}
+  .btn-accent:hover{box-shadow:0 0 24px color-mix(in srgb,var(--acc) 60%,transparent)}
+
+  .palette{display:flex;padding:16px 32px 24px;background:var(--b2);gap:10px;flex-wrap:wrap}
+  .chip{display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--b3);border:1px solid var(--b4);border-radius:999px;font-size:0.78rem;color:var(--tx2)}
+  .chip .sw{width:14px;height:14px;border-radius:4px}
+
+  .components{padding:32px;background:var(--b1);display:grid;gap:24px}
+  .comp-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .comp-label{font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--tx2);font-weight:600;width:100%;margin-bottom:4px}
+  .badge{display:inline-flex;align-items:center;gap:5px;font-size:0.78rem;font-weight:600;border-radius:999px;padding:5px 11px;border:1px solid}
+  .b-agri{background:rgba(34,197,94,.15);color:#4ADE80;border-color:rgba(34,197,94,.35)}
+  .b-quant{background:rgba(59,130,246,.15);color:#60A5FA;border-color:rgba(59,130,246,.35)}
+  .b-reas{background:rgba(168,85,247,.15);color:#C084FC;border-color:rgba(168,85,247,.35)}
+  .b-gk{background:rgba(245,158,11,.15);color:#FBBF24;border-color:rgba(245,158,11,.35)}
+
+  .course-card{background:linear-gradient(180deg,var(--b3),var(--b2));border:1px solid var(--b4);border-radius:14px;padding:20px;max-width:320px;border-top:3px solid var(--prim)}
+  .course-card .cats{display:flex;gap:6px;margin-bottom:12px}
+  .course-card h3{font-size:1.1rem;font-weight:700;color:var(--tx);margin-bottom:6px}
+  .course-card p{font-size:0.85rem;color:var(--tx2);margin-bottom:14px}
+  .course-card .foot{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--b4)}
+  .price{font-size:1.25rem;font-weight:800;color:var(--tx)}
+  .price .old{font-size:0.8rem;color:var(--tx2);text-decoration:line-through;font-weight:500;margin-right:5px}
+
+  .verdict{margin-top:40px;padding:28px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:16px}
+  .verdict h3{font-size:1.3rem;font-weight:700;margin-bottom:14px}
+  .verdict ul{list-style:none;display:grid;gap:10px}
+  .verdict li{display:flex;gap:10px;color:#94a3b8;font-size:0.95rem}
+  .verdict li b{color:#e2e8f0}
+  .pick{display:inline-block;margin-top:16px;padding:10px 18px;background:linear-gradient(135deg,#10B981,#0EA5E9);color:#fff;border-radius:10px;font-weight:700;font-size:0.9rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="intro">
+    <div class="pill">🎯 3 PREMIUM THEME OPTIONS — RESEARCH-BACKED</div>
+    <h1>Learning Point — Choose Your Vibe</h1>
+    <p>Each theme uses the proven <b style="color:#4ADE80">growth-color</b> + <b style="color:#60A5FA">trust-color</b> + <b style="color:#FBBF24">energy-accent</b> formula. Gradients, glow &amp; contrast — not boring. Pick one and tell me!</p>
+  </div>
+
+  <!-- ===== THEME 1: EMERALD EDGE ===== -->
+  <div class="theme-block t-emerald">
+    <div class="theme-tag" style="background:linear-gradient(90deg,var(--b3),var(--b2));color:var(--tx)">
+      🟢 THEME 1 — "EMERALD EDGE" <span class="num">Green + Blue + Amber · Most research-backed</span>
+    </div>
+    <div class="hero">
+      <div class="hero-inner">
+        <div class="hero-badge"><span class="d"></span> AGRICULTURE • UPSSSC</div>
+        <h2>Crack your exam with <span class="hl">confidence</span>.</h2>
+        <p>Syllabus-grounded tests, deep explanations &amp; real ranks — built for serious aspirants.</p>
+        <div class="hero-cta">
+          <a class="btn btn-grad">Start Free Test →</a>
+          <a class="btn btn-accent">⚡ Buy at ₹299</a>
+        </div>
+      </div>
+    </div>
+    <div class="palette">
+      <div class="chip"><span class="sw" style="background:var(--b1)"></span> Base #06120F</div>
+      <div class="chip"><span class="sw" style="background:var(--prim)"></span> Emerald #10B981</div>
+      <div class="chip"><span class="sw" style="background:var(--sec)"></span> Blue #0EA5E9</div>
+      <div class="chip"><span class="sw" style="background:var(--acc)"></span> Amber #FBBF24</div>
+    </div>
+    <div class="components">
+      <div class="comp-row">
+        <div class="comp-label">Category Badges</div>
+        <span class="badge b-agri">Agriculture</span>
+        <span class="badge b-quant">Quant</span>
+        <span class="badge b-reas">Reasoning</span>
+        <span class="badge b-gk">GK</span>
+      </div>
+      <div class="comp-row">
+        <div class="comp-label">Course Card</div>
+        <div class="course-card">
+          <div class="cats"><span class="badge b-agri">Agriculture</span><span class="badge" style="background:var(--b4);color:var(--tx2);border-color:var(--b4)">100 Qs</span></div>
+          <h3>UPSSSC Agriculture Full Mock</h3>
+          <p>Complete syllabus + PYQ pattern with detailed explanations.</p>
+          <div class="foot"><div class="price"><span class="old">₹499</span>₹299</div><a class="btn btn-grad" style="font-size:.85rem;padding:9px 16px">Enroll</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== THEME 2: ROYAL VIOLET ===== -->
+  <div class="theme-block t-royal">
+    <div class="theme-tag" style="background:linear-gradient(90deg,var(--b3),var(--b2));color:var(--tx)">
+      🟣 THEME 2 — "ROYAL VIOLET" <span class="num">Violet + Indigo + Gold · Premium / achievement feel</span>
+    </div>
+    <div class="hero">
+      <div class="hero-inner">
+        <div class="hero-badge"><span class="d"></span> AGRICULTURE • UPSSSC</div>
+        <h2>Crack your exam with <span class="hl">confidence</span>.</h2>
+        <p>Syllabus-grounded tests, deep explanations &amp; real ranks — built for serious aspirants.</p>
+        <div class="hero-cta">
+          <a class="btn btn-grad">Start Free Test →</a>
+          <a class="btn btn-accent">⚡ Buy at ₹299</a>
+        </div>
+      </div>
+    </div>
+    <div class="palette">
+      <div class="chip"><span class="sw" style="background:var(--b1)"></span> Base #0C0816</div>
+      <div class="chip"><span class="sw" style="background:var(--prim)"></span> Violet #8B5CF6</div>
+      <div class="chip"><span class="sw" style="background:var(--sec)"></span> Indigo #6366F1</div>
+      <div class="chip"><span class="sw" style="background:var(--acc)"></span> Gold #FBBF24</div>
+    </div>
+    <div class="components">
+      <div class="comp-row">
+        <div class="comp-label">Category Badges</div>
+        <span class="badge b-agri">Agriculture</span>
+        <span class="badge b-quant">Quant</span>
+        <span class="badge b-reas">Reasoning</span>
+        <span class="badge b-gk">GK</span>
+      </div>
+      <div class="comp-row">
+        <div class="comp-label">Course Card</div>
+        <div class="course-card">
+          <div class="cats"><span class="badge b-agri">Agriculture</span><span class="badge" style="background:var(--b4);color:var(--tx2);border-color:var(--b4)">100 Qs</span></div>
+          <h3>UPSSSC Agriculture Full Mock</h3>
+          <p>Complete syllabus + PYQ pattern with detailed explanations.</p>
+          <div class="foot"><div class="price"><span class="old">₹499</span>₹299</div><a class="btn btn-grad" style="font-size:.85rem;padding:9px 16px">Enroll</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== THEME 3: TEAL AURORA ===== -->
+  <div class="theme-block t-teal">
+    <div class="theme-tag" style="background:linear-gradient(90deg,var(--b3),var(--b2));color:var(--tx)">
+      🔷 THEME 3 — "TEAL AURORA" <span class="num">Teal + Cyan + Coral · 2026 modern / sophisticated</span>
+    </div>
+    <div class="hero">
+      <div class="hero-inner">
+        <div class="hero-badge"><span class="d"></span> AGRICULTURE • UPSSSC</div>
+        <h2>Crack your exam with <span class="hl">confidence</span>.</h2>
+        <p>Syllabus-grounded tests, deep explanations &amp; real ranks — built for serious aspirants.</p>
+        <div class="hero-cta">
+          <a class="btn btn-grad">Start Free Test →</a>
+          <a class="btn btn-accent">⚡ Buy at ₹299</a>
+        </div>
+      </div>
+    </div>
+    <div class="palette">
+      <div class="chip"><span class="sw" style="background:var(--b1)"></span> Base #061416</div>
+      <div class="chip"><span class="sw" style="background:var(--prim)"></span> Teal #14B8A6</div>
+      <div class="chip"><span class="sw" style="background:var(--sec)"></span> Cyan #06B6D4</div>
+      <div class="chip"><span class="sw" style="background:var(--acc)"></span> Coral #FB7185</div>
+    </div>
+    <div class="components">
+      <div class="comp-row">
+        <div class="comp-label">Category Badges</div>
+        <span class="badge b-agri">Agriculture</span>
+        <span class="badge b-quant">Quant</span>
+        <span class="badge b-reas">Reasoning</span>
+        <span class="badge b-gk">GK</span>
+      </div>
+      <div class="comp-row">
+        <div class="comp-label">Course Card</div>
+        <div class="course-card">
+          <div class="cats"><span class="badge b-agri">Agriculture</span><span class="badge" style="background:var(--b4);color:var(--tx2);border-color:var(--b4)">100 Qs</span></div>
+          <h3>UPSSSC Agriculture Full Mock</h3>
+          <p>Complete syllabus + PYQ pattern with detailed explanations.</p>
+          <div class="foot"><div class="price"><span class="old">₹499</span>₹299</div><a class="btn btn-grad" style="font-size:.85rem;padding:9px 16px">Enroll</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <h3>📊 My recommendation</h3>
+    <ul>
+      <li>✅ <b>Theme 1 "Emerald Edge"</b> — Green+Blue is the proven winner for Indian ed-tech (Unacademy, Toppr, Brilliant all use it). Green = growth/learner, Blue = trust/educator. Most "educational" feel.</li>
+      <li>👑 <b>Theme 2 "Royal Violet"</b> — Premium, achievement-focused. Feels like a high-end coaching institute. Gold = success/trophy.</li>
+      <li>✨ <b>Theme 3 "Teal Aurora"</b> — Most modern/2026. Teal is fresh &amp; sophisticated. Coral accent pops with energy.</li>
+    </ul>
+    <span class="pick">Bolo "Theme 1 / 2 / 3" — ya mix karna hai to batao!</span>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Point — Emerald Edge Design System</title>
+<style>
+  :root {
+    --bg-base:#050f0c; --bg-s1:#0b1b16; --bg-s2:#112620; --bg-s3:#18332a;
+    --bd-s:#152921; --bd:#1f3d32; --bd2:#2d5645;
+    --tx:#ecfdf5; --tx2:#9fc2b6; --tx3:#6b8a80;
+    --emerald:#10b981; --emerald2:#34d399; --emerald3:#6ee7b7; --emerald6:#059669;
+    --blue:#0ea5e9; --blue2:#38bdf8;
+    --amber:#fbbf24; --amber2:#f59e0b;
+    --agri:#22c55e; --quant:#3b82f6; --reas:#a855f7; --gk:#f59e0b; --comp:#06b6d4; --lang:#f43f5e;
+    --err:#ef4444; --warn:#f59e0b; --suc:#22c55e; --info:#0ea5e9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Plus Jakarta Sans','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans Devanagari',sans-serif;background:var(--bg-base);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
+  body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(circle at 15% 15%,rgba(16,185,129,.10),transparent 45%),radial-gradient(circle at 85% 85%,rgba(14,165,233,.08),transparent 45%)}
+  h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-0.02em}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem}
+  .logo .mk{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--emerald),var(--blue));display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 0 18px rgba(16,185,129,.4)}
+  .nav-links{display:flex;gap:28px}
+  .nav-links a{color:var(--tx2);font-size:.92rem;font-weight:500;transition:.2s}
+  .nav-links a:hover{color:var(--tx)}
+  .lang{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;background:var(--bg-s2);border:1px solid var(--bd);border-radius:8px;font-size:.82rem;color:var(--tx2);cursor:pointer}
+
+  .hero{padding:64px 0 48px;text-align:center}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.35);border-radius:999px;font-size:.8rem;font-weight:600;color:var(--emerald2);margin-bottom:22px}
+  .hero-badge .d{width:7px;height:7px;border-radius:50%;background:var(--emerald);box-shadow:0 0 10px var(--emerald)}
+  .hero h1{font-size:3.4rem;font-weight:800;line-height:1.1;margin-bottom:18px}
+  .hero h1 .hl{background:linear-gradient(135deg,var(--emerald2),var(--blue2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .hero p{font-size:1.18rem;color:var(--tx2);max-width:600px;margin:0 auto 32px}
+  .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;border-radius:10px;border:none;cursor:pointer;font-size:1rem;padding:13px 26px;transition:all .2s;text-decoration:none;font-family:inherit}
+  .btn-primary{background:linear-gradient(135deg,var(--emerald),var(--blue));color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.4),0 0 20px rgba(16,185,129,.3)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.5),0 0 30px rgba(16,185,129,.45)}
+  .btn-cta{background:linear-gradient(135deg,var(--amber),var(--amber2));color:#1a1410;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+  .btn-cta:hover{transform:translateY(-2px);box-shadow:0 0 26px rgba(251,191,36,.5)}
+  .btn-ghost{background:rgba(255,255,255,.06);color:var(--tx);border:1px solid var(--bd)}
+  .btn-ghost:hover{background:var(--bg-s2);border-color:var(--bd2)}
+  .hero-stats{display:flex;gap:40px;justify-content:center;margin-top:44px;flex-wrap:wrap}
+  .stat{text-align:center}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--emerald2)}
+  .stat .l{font-size:.82rem;color:var(--tx3)}
+
+  section{padding:48px 0;border-top:1px solid var(--bd-s)}
+  .sec-head{text-align:center;margin-bottom:36px}
+  .sec-head .kicker{font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--emerald2);margin-bottom:10px}
+  .sec-head h2{font-size:2rem;font-weight:800}
+  .sec-head p{color:var(--tx2);margin-top:8px}
+
+  .cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+  .cat-card{background:var(--bg-s1);border:1px solid var(--bd-s);border-radius:14px;padding:20px;text-align:center;transition:.2s}
+  .cat-card:hover{transform:translateY(-3px);border-color:var(--bd)}
+  .cat-card .icon{width:46px;height:46px;border-radius:12px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+  .cat-card .nm{font-weight:700;font-size:.92rem}
+  .cat-card .ct{font-size:.75rem;color:var(--tx3);margin-top:2px}
+
+  .course-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
+  .course{background:linear-gradient(180deg,var(--bg-s2),var(--bg-s1));border:1px solid var(--bd);border-radius:16px;padding:22px;transition:.25s;position:relative;overflow:hidden}
+  .course:hover{transform:translateY(-4px);border-color:var(--emerald);box-shadow:0 12px 30px rgba(0,0,0,.4),0 0 0 1px rgba(16,185,129,.2)}
+  .course.agri{border-top:3px solid var(--agri)}
+  .course.quant{border-top:3px solid var(--quant)}
+  .course .cats{display:flex;gap:7px;margin-bottom:13px}
+  .badge{display:inline-flex;align-items:center;gap:5px;font-size:.74rem;font-weight:600;border-radius:999px;padding:4px 10px;border:1px solid}
+  .b-agri{background:rgba(34,197,94,.15);color:#4ade80;border-color:rgba(34,197,94,.35)}
+  .b-quant{background:rgba(59,130,246,.15);color:#60a5fa;border-color:rgba(59,130,246,.35)}
+  .b-free{background:rgba(16,185,129,.15);color:var(--emerald2);border-color:rgba(16,185,129,.35)}
+  .b-neutral{background:var(--bg-s3);color:var(--tx2);border-color:var(--bd)}
+  .course h3{font-size:1.15rem;font-weight:700;margin-bottom:7px}
+  .course p{font-size:.86rem;color:var(--tx2);margin-bottom:16px}
+  .meta{display:flex;gap:14px;font-size:.78rem;color:var(--tx3);margin-bottom:16px}
+  .course-foot{display:flex;align-items:center;justify-content:space-between;padding-top:15px;border-top:1px solid var(--bd)}
+  .price{font-size:1.4rem;font-weight:800}
+  .price .old{font-size:.82rem;color:var(--tx3);text-decoration:line-through;font-weight:500;margin-right:5px}
+  .price.free{color:var(--emerald2)}
+  .btn-sm{font-size:.85rem;padding:9px 16px}
+
+  .components-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+  .comp-box{background:var(--bg-s1);border:1px solid var(--bd-s);border-radius:14px;padding:24px}
+  .comp-box h4{font-size:.78rem;text-transform:uppercase;letter-spacing:1px;color:var(--tx3);margin-bottom:14px;font-weight:700}
+  .swatch-row{display:flex;gap:8px;flex-wrap:wrap}
+  .sw{width:54px;height:54px;border-radius:10px;border:1px solid var(--bd)}
+  .btn-stack{display:flex;flex-direction:column;gap:10px}
+  .inp{width:100%;background:var(--bg-s1);border:1px solid var(--bd);color:var(--tx);border-radius:8px;padding:11px 14px;font-size:.95rem;font-family:inherit}
+  .inp::placeholder{color:var(--tx3)}
+  .inp:focus{outline:none;border-color:var(--emerald);box-shadow:0 0 0 1px rgba(16,185,129,.35),0 0 20px rgba(16,185,129,.15)}
+  .lbl{font-size:.82rem;font-weight:500;color:var(--tx2);margin-bottom:6px;display:block}
+  .badge-stack{display:flex;gap:7px;flex-wrap:wrap}
+
+  .footer{text-align:center;padding:40px 0;color:var(--tx3);font-size:.85rem;border-top:1px solid var(--bd-s)}
+  .footer .ok{color:var(--emerald2);font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="logo"><div class="mk">LP</div> Learning Point</div>
+    <div class="nav-links">
+      <a href="#">Exams</a><a href="#">Courses</a><a href="#">Test Series</a><a href="#">Free Tests</a>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center">
+      <span class="lang">🌐 EN</span>
+      <button class="btn btn-primary btn-sm" style="font-size:.85rem;padding:9px 16px">Login</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge"><span class="d"></span> INDIA'S EXAM-FOCUSED TEST PLATFORM</div>
+    <h1>Master your exam with <span class="hl">confidence</span>.</h1>
+    <p>Syllabus-grounded tests, deep approved explanations &amp; real ranks — built for serious aspirants. No fluff, just results.</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary">Start Free Test →</button>
+      <button class="btn btn-cta">⚡ Explore Courses</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="n">500+</div><div class="l">Tests</div></div>
+      <div class="stat"><div class="n">50k+</div><div class="l">Questions</div></div>
+      <div class="stat"><div class="n">1,000+</div><div class="l">Students</div></div>
+      <div class="stat"><div class="n">5</div><div class="l">Reattempts</div></div>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <section>
+    <div class="sec-head">
+      <div class="kicker">Exam Categories</div>
+      <h2>What are you preparing for?</h2>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card"><div class="icon" style="background:rgba(34,197,94,.15);color:var(--agri)">🌾</div><div class="nm">Agriculture</div><div class="ct">UPSSSC, ICAR</div></div>
+      <div class="cat-card"><div class="icon" style="background:rgba(59,130,246,.15);color:var(--quant)">🔢</div><div class="nm">Quant</div><div class="ct">Aptitude</div></div>
+      <div class="cat-card"><div class="icon" style="background:rgba(168,85,247,.15);color:var(--reas)">🧩</div><div class="nm">Reasoning</div><div class="ct">Logical</div></div>
+      <div class="cat-card"><div class="icon" style="background:rgba(245,158,11,.15);color:var(--gk)">📚</div><div class="nm">GK / History</div><div class="ct">UP Special</div></div>
+      <div class="cat-card"><div class="icon" style="background:rgba(6,182,212,.15);color:var(--comp)">💻</div><div class="nm">Computer</div><div class="ct">Awareness</div></div>
+      <div class="cat-card"><div class="icon" style="background:rgba(244,63,94,.15);color:var(--lang)">📖</div><div class="nm">Language</div><div class="ct">Hindi / English</div></div>
+    </div>
+  </section>
+
+  <!-- COURSES -->
+  <section>
+    <div class="sec-head">
+      <div class="kicker">Popular Courses</div>
+      <h2>Start your preparation today</h2>
+    </div>
+    <div class="course-grid">
+      <div class="course agri">
+        <div class="cats"><span class="badge b-agri">Agriculture</span><span class="badge b-neutral">100 Qs</span></div>
+        <h3>UPSSSC Agriculture Full Mock</h3>
+        <p>Complete syllabus coverage with PYQ-pattern questions and detailed step-by-step explanations.</p>
+        <div class="meta"><span>⏱ 120 min</span><span>📊 Ranked</span><span>🔁 5 reattempts</span></div>
+        <div class="course-foot"><div class="price"><span class="old">₹499</span>₹299</div><button class="btn btn-primary btn-sm">Enroll →</button></div>
+      </div>
+      <div class="course quant">
+        <div class="cats"><span class="badge b-quant">Quant</span><span class="badge b-free">Free</span></div>
+        <h3>Quantitative Aptitude Booster</h3>
+        <p>50 topic-wise tests covering arithmetic, algebra &amp; data interpretation with shortcuts.</p>
+        <div class="meta"><span>⏱ 60 min</span><span>📊 Ranked</span><span>🔁 5 reattempts</span></div>
+        <div class="course-foot"><div class="price free">Free</div><button class="btn btn-cta btn-sm">Start Now</button></div>
+      </div>
+      <div class="course agri">
+        <div class="cats"><span class="badge b-agri">Agriculture</span><span class="badge b-neutral">Bundle</span></div>
+        <h3>Complete Test Series Bundle</h3>
+        <p>All exams · 500+ tests · Lifetime access · Real-time rank &amp; leaderboard.</p>
+        <div class="meta"><span>⏱ All</span><span>📊 Ranked</span><span>♾️ Lifetime</span></div>
+        <div class="course-foot"><div class="price">₹1,999</div><button class="btn btn-primary btn-sm">Buy Bundle</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPONENTS -->
+  <section>
+    <div class="sec-head">
+      <div class="kicker">Design System</div>
+      <h2>Emerald Edge — Component Library</h2>
+      <p>Colors · Buttons · Badges · Inputs</p>
+    </div>
+    <div class="components-grid">
+      <div class="comp-box">
+        <h4>Palette</h4>
+        <div class="swatch-row">
+          <div class="sw" style="background:var(--bg-base)"></div>
+          <div class="sw" style="background:var(--bg-s2)"></div>
+          <div class="sw" style="background:var(--emerald)" title="Emerald #10B981"></div>
+          <div class="sw" style="background:var(--blue)" title="Blue #0EA5E9"></div>
+          <div class="sw" style="background:var(--amber)" title="Amber #FBBF24"></div>
+        </div>
+        <div style="font-size:.72rem;color:var(--tx3);margin-top:10px;font-family:monospace">base · surface · #10B981 · #0EA5E9 · #FBBF24</div>
+      </div>
+      <div class="comp-box">
+        <h4>Buttons</h4>
+        <div class="btn-stack">
+          <button class="btn btn-primary">Primary (Gradient)</button>
+          <button class="btn btn-cta">CTA (Amber)</button>
+          <button class="btn btn-ghost">Secondary</button>
+        </div>
+      </div>
+      <div class="comp-box">
+        <h4>Badges</h4>
+        <div class="badge-stack">
+          <span class="badge b-agri">Agriculture</span>
+          <span class="badge b-quant">Quant</span>
+          <span class="badge" style="background:rgba(168,85,247,.15);color:#c084fc;border-color:rgba(168,85,247,.35)">Reasoning</span>
+          <span class="badge" style="background:rgba(245,158,11,.15);color:#fbbf24;border-color:rgba(245,158,11,.35)">GK</span>
+          <span class="badge b-free">✓ Verified</span>
+          <span class="badge b-neutral">100 Qs</span>
+        </div>
+      </div>
+      <div class="comp-box">
+        <h4>Inputs</h4>
+        <div style="display:grid;gap:14px">
+          <div><span class="lbl">Mobile Number</span><input class="inp" placeholder="98765 43210"></div>
+          <div><span class="lbl">Password</span><input class="inp" type="password" placeholder="Min 8 chars"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="footer">
+  Learning Point · <span class="ok">Emerald Edge</span> Design System v1.0 · Green + Blue + Amber · Ready for Next.js scaffold 🚀
+</div>
+
+</body>
+</html>
