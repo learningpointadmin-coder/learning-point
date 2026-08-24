@@ -1,0 +1,262 @@
+/* ============================================================================
+   LEARNING POINT — DESIGN TOKENS · THEME: "EMERALD EDGE"
+   ============================================================================
+   Green (growth/learner) + Blue (trust/educator) + Amber (energy/CTA).
+   The proven ed-tech color formula (Unacademy/Toppr/Brilliant pattern).
+   Gradients + glow + high contrast — professional, not boring.
+   ============================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ==========================================================================
+     COLOR — BASE (Deep Emerald-Black layers)
+     ========================================================================== */
+  --bg-base: #050f0c;          /* deepest — green-tinted black */
+  --bg-surface-1: #0b1b16;     /* card background */
+  --bg-surface-2: #112620;     /* elevated / hover */
+  --bg-surface-3: #18332a;     /* modals, popovers */
+  --border-subtle: #152921;
+  --border-default: #1f3d32;
+  --border-strong: #2d5645;
+
+  /* ==========================================================================
+     COLOR — TEXT
+     ========================================================================== */
+  --text-primary: #ecfdf5;     /* mint-tinted white — headings */
+  --text-secondary: #9fc2b6;   /* descriptions */
+  --text-muted: #6b8a80;       /* captions, placeholders */
+  --text-disabled: #4a6359;
+  --text-inverse: #051410;     /* text on emerald/accent backgrounds */
+
+  /* ==========================================================================
+     COLOR — BRAND (EMERALD = primary identity)
+     ========================================================================== */
+  --brand-50: #ecfdf5;
+  --brand-100: #d1fae5;
+  --brand-200: #a7f3d0;
+  --brand-300: #6ee7b7;
+  --brand-400: #34d399;
+  --brand-500: #10b981;        /* primary emerald */
+  --brand-600: #059669;
+  --brand-700: #047857;
+  --brand-800: #065f46;
+
+  /* ==========================================================================
+     COLOR — SECONDARY (BLUE = trust/focus, used in gradients)
+     ========================================================================== */
+  --secondary-400: #38bdf8;
+  --secondary-500: #0ea5e9;    /* sky blue */
+  --secondary-600: #0284c7;
+
+  /* ==========================================================================
+     COLOR — CTA ACCENT (AMBER = energy / action)
+     ========================================================================== */
+  --cta: #fbbf24;              /* amber */
+  --cta-hover: #f59e0b;
+  --cta-text: #1a1410;         /* dark text on amber */
+
+  /* ==========================================================================
+     GRADIENTS (signature brand gradients)
+     ========================================================================== */
+  --gradient-primary: linear-gradient(135deg, #10b981 0%, #0ea5e9 100%);
+  --gradient-cta: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  --gradient-text: linear-gradient(135deg, #34d399 0%, #38bdf8 100%);
+
+  /* ==========================================================================
+     COLOR — CATEGORY ACCENTS (exam categories — multicolour)
+     ========================================================================== */
+  --accent-agriculture: #22c55e;
+  --accent-quant: #3b82f6;
+  --accent-reasoning: #a855f7;
+  --accent-gk: #f59e0b;
+  --accent-computer: #06b6d4;
+  --accent-language: #f43f5e;
+  --accent-science: #14b8a6;
+
+  /* ==========================================================================
+     COLOR — SEMANTIC
+     ========================================================================== */
+  --success: #22c55e;
+  --success-bg: rgba(34, 197, 94, 0.12);
+  --warning: #f59e0b;
+  --warning-bg: rgba(245, 158, 11, 0.12);
+  --error: #ef4444;
+  --error-bg: rgba(239, 68, 68, 0.12);
+  --info: #0ea5e9;
+  --info-bg: rgba(14, 165, 233, 0.12);
+
+  /* ==========================================================================
+     TYPOGRAPHY
+     ========================================================================== */
+  --font-display: 'Plus Jakarta Sans', 'Noto Sans Devanagari', system-ui, sans-serif;
+  --font-sans: 'Inter', 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+
+  --leading-tight: 1.2;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+
+  /* ==========================================================================
+     SPACING (4px base)
+     ========================================================================== */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+
+  /* ==========================================================================
+     RADIUS
+     ========================================================================== */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* ==========================================================================
+     SHADOWS (emerald-tuned glow)
+     ========================================================================== */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 0 1px rgba(16, 185, 129, 0.35), 0 0 24px rgba(16, 185, 129, 0.2);
+  --shadow-glow-cta: 0 0 0 1px rgba(251, 191, 36, 0.35), 0 0 24px rgba(251, 191, 36, 0.2);
+
+  /* ==========================================================================
+     TRANSITIONS
+     ========================================================================== */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ==========================================================================
+     LAYOUT
+     ========================================================================== */
+  --container-max: 1200px;
+  --header-height: 4rem;
+  --mobile-nav-height: 3.5rem;
+}
+
+/* ============================================================================
+   RESET + BASE
+   ============================================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* Signature emerald+blue aurora background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.10), transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(14, 165, 233, 0.08), transparent 45%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+img, svg, video { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+input, textarea, select { font-family: inherit; }
+
+/* ============================================================================
+   SCROLLBAR
+   ============================================================================ */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--bg-base);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--border-strong); }
+
+/* ============================================================================
+   FOCUS (accessibility)
+   ============================================================================ */
+:focus-visible {
+  outline: 2px solid var(--brand-500);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+::selection { background: rgba(16, 185, 129, 0.3); color: var(--text-primary); }
+
+/* ============================================================================
+   UTILITIES
+   ============================================================================ */
+.container-lp {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+@media (min-width: 768px) {
+  .container-lp { padding-inline: var(--space-6); }
+}
+
+/* Signature gradients */
+.gradient-primary { background: var(--gradient-primary); }
+.gradient-cta { background: var(--gradient-cta); }
+.text-gradient {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Animations */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up { animation: fade-in-up var(--transition-slow) ease-out both; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
